@@ -1,10 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Todo
 from .forms import TodoForm 
 
-def todo_list(request):
+def home(request):
     todos = Todo.objects.all()
-    return render(request, 'todos/todo_list.html', {'todos': todos})
+    return render(request, 'home.html', {'todos': todos})
 
 
 def todo_create(request):
@@ -12,8 +12,8 @@ def todo_create(request):
         form = TodoForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('todo_list')
+            return redirect('home')
     else:
         form = TodoForm()
-    return render(request, 'todos/todo_form.html', {'form': form})
+    return render(request, 'todo_form.html', {'form': form})
 
