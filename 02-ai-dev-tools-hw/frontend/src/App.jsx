@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { io } from 'socket.io-client';
 import { v4 as uuidv4 } from 'uuid';
 import MonacoEditor from '@monaco-editor/react';
+import PythonExecutor from './PythonExecutor';
 
 const BACKEND_URL = 'http://localhost:4000';
 
@@ -72,14 +73,15 @@ function App() {
             <option value="java">Java</option>
           </select>
           <MonacoEditor
-            height="400px"
-            language={language}
-            value={code}
-            onChange={handleCodeChange}
-            theme="vs-dark"
-          />
+        height="400px"
+        language={language} // e.g., 'javascript' or 'python'
+        value={code}
+        onChange={handleCodeChange}
+        theme="vs-dark"
+      />
         </>
       )}
+      {language === 'python' && <PythonExecutor code={code} />}
     </div>
   );
 }
