@@ -18,6 +18,6 @@ def download_markdown(url: str) -> str:
 
 # Example usage:
 if __name__ == "__main__":
-    page_url = "https://datatalks.club"
+    page_url = "https://github.com/alexeygrigorev/minsearch"
     markdown_content = download_markdown(page_url)
-    print(markdown_content)
+    print(len(markdown_content))
